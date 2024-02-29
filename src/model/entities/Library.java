@@ -11,12 +11,12 @@ import java.util.List;
 public class Library {
 
     // Cria uma lista de livros do tipo Book.
-    private List<Book> books = new ArrayList<>();
-    private static UserInterfaceService userInterface = new UserInterfaceService();
+    private final List<Book> books = new ArrayList<>();
+    private static final UserInterfaceService userInterface = new UserInterfaceService();
 
     // Adiciona um livro na lista:
     public void addNewBook(Book book) {
-        books.add(book);
+            books.add(book);
     }
 
     public void removeBook(String title) {
@@ -32,7 +32,7 @@ public class Library {
             /* 4. Verifica se o título do livro atual é igual ao título fornecido como parâmetro para o método
              * "removeBook". O método "equalsIgnoreCase()" compara duas strings ignorando as diferenças entre
              * maiúsculas e minúsculas. */
-            if (book.getTitle().equalsIgnoreCase(title)) {
+            if (book.title().equalsIgnoreCase(title)) {
                 /* 5. Se o título do livro atual corresponder ao título fornecido, removemos o livro da lista usando o
                  * método "remove()" do iterador. */
                 iterator.remove();
@@ -52,10 +52,10 @@ public class Library {
             userInterface.displayMenu();
         }
         StringBuilder message = new StringBuilder();
-        message.append("Here is your book list:\n\n");
+        message.append("Here is your book list:\n");
 
         for (Book book : books) {
-            message.append(book.toString()).append("\n");
+            message.append(book.toString()).append("\n\n");
         }
 
         JOptionPane.showMessageDialog(null, message.toString());
