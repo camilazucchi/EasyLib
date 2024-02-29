@@ -39,6 +39,7 @@ public class Library {
                 System.out.println("Book: " + title + " was remove successfully!");
                 return;
             }
+            // Se o livro não estiver na lista, retorna:
             System.out.println("Book: " + title + " was not found in your book list.");
         }
     }
@@ -50,9 +51,14 @@ public class Library {
                     " Please create a book list first.");
             userInterface.displayMenu();
         }
+        StringBuilder message = new StringBuilder();
+        message.append("Here is your book list:\n\n");
+
         for (Book book : books) {
-            System.out.println(book);
+            message.append(book.toString()).append("\n");
         }
+
+        JOptionPane.showMessageDialog(null, message.toString());
     }
 
 }
